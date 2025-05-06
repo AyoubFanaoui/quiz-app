@@ -1,3 +1,43 @@
 <resources>
     <string name="app_name">QuizeAppCulture</string>
+    <!--    Quiz 1-->
+    <string name="Quiz1">Quiz 1/5</string>
+    <string name="quize1.question1">Quelle est la capitale de la France ?</string>
+    <string name="quize1.question1.choix1">Paris</string>
+    <string name="quize1.question1.choix2">Londres</string>
+    <string name="quize1.question1.choix3">Rome</string>
+
+    <!-- Quiz 2   -->
+
+    <string name="Quiz2">Quiz 2/5</string>
+    <string name="quiz2.question1">Quelle est la capitale du Canada ?</string>
+    <string name="quiz2.question1.choix1">Toronto</string>
+    <string name="quiz2.question1.choix2">Ottawa </string>
+    <string name="quiz2.question1.choix3">Vancouver</string>
+
+    <!-- Quiz 3   -->
+
+    <string name="Quiz3">Quiz 3/5</string>
+    <string name="quiz3.question1">Quel est le plus grand océan du monde ?</string>
+    <string name="quiz3.question1.choix1">Océan Atlantique</string>
+    <string name="quiz3.question1.choix2"> Océan Indien </string>
+    <string name="quiz3.question1.choix3"> Océan Pacifique </string>
+
+
+
+    <!-- Quiz 4   -->
+
+    <string name="Quiz4">Quiz 4/5</string>
+    <string name="quiz4.question1">Lequel des éléments suivants est reconnu comme un symbole culturel fort de la Palestine ?</string>
+    <string name="quiz4.question1.choix1">Le kimono</string>
+    <string name="quiz4.question1.choix2">  Le keffieh </string>
+    <string name="quiz4.question1.choix3">  Le sombrero </string>
+
+    <!-- Quiz 5   -->
+
+    <string name="Quiz5">Quiz 5/5</string>
+    <string name="quiz5.question1">Quels sont les deux principaux territoires revendiqués par la Palestine comme faisant partie de son futur État ?</string>
+    <string name="quiz5.question1.choix1"> Le Golan et le Néguev</string>
+    <string name="quiz5.question1.choix2"> La Cisjordanie et la bande de Gaza </string>
+    <string name="quiz5.question1.choix3"> Le Sinaï et la Galilée </string>
 </resources>

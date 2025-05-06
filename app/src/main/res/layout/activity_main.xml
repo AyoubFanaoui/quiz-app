@@ -2,12 +2,11 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity"
+    android:background="@drawable/background"
     android:orientation="vertical"
-    android:background="@drawable/background">
+    tools:context=".MainActivity">
 
 
     <de.hdodenhof.circleimageview.CircleImageView
@@ -18,8 +17,7 @@
         android:background="@drawable/round_background"
         android:src="@drawable/img"
         app:civ_border_color="@color/colorPrimary"
-        app:civ_border_width="5dp"
-        >
+        app:civ_border_width="5dp">
 
     </de.hdodenhof.circleimageview.CircleImageView>
 
@@ -34,38 +32,46 @@
             android:layout_height="wrap_content"
             android:layout_margin="20dp"
             android:drawableLeft="@android:drawable/ic_dialog_email"
-            android:drawableTint="#094AF0"
+            android:drawableTint="#284C9E"
+            android:ems="10"
             android:hint="Email"
+            android:drawablePadding="10dp"
             android:inputType="textEmailAddress" />
 
+
         <EditText
-            android:id="@+id/textView"
+            android:id="@+id/password"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="20dp"
             android:drawableLeft="@android:drawable/ic_lock_lock"
-            android:drawableTint="#355FCA"
-            android:hint="Email"
+            android:drawableTint="#0687FF"
+            android:drawablePadding="10dp"
+            android:ems="10"
+            android:hint="Password"
             android:inputType="textPassword" />
 
         <Button
+            android:id="@+id/login"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:background="@color/cardview_dark_background"
             android:text="Sign in"
             android:textColor="@color/white"
-            android:textSize="15sp"
-            android:background="@color/cardview_dark_background"
-            android:layout_margin="10dp"
-            />
+            android:textSize="15sp" />
+
         <TextView
+            android:id="@+id/register"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="To register click here"
-            android:textStyle="bold|italic"
+            android:textAlignment="center"
             android:textColor="@color/colorPrimary"
             android:textSize="18dp"
-            android:textAlignment="center"/>
+            android:textStyle="bold|italic" />
 
     </LinearLayout>
+
 
 </LinearLayout>
