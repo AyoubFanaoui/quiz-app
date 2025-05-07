@@ -43,7 +43,7 @@ public class Score extends AppCompatActivity {
 
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(Score.this, Quiz1.class);
+                Intent intent = new Intent(Score.this, QuizActivity.class);
                 startActivity(intent);
             }
         });
