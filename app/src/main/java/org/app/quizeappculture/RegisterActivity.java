@@ -11,6 +11,9 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.google.firebase.FirebaseApp;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.firestore.FirebaseFirestore;
+
+import org.app.quizeappculture.entites.User;
 
 public class RegisterActivity extends AppCompatActivity {
 
@@ -18,6 +21,7 @@ public class RegisterActivity extends AppCompatActivity {
     private Button registerButton;
 
     private FirebaseAuth mAuth;
+    private FirebaseFirestore db;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,6 +41,8 @@ public class RegisterActivity extends AppCompatActivity {
 
         // Initialisation de Firebase Auth
         mAuth = FirebaseAuth.getInstance();
+        // Initialisation de Firestore
+        db = FirebaseFirestore.getInstance();
 
         // Gestion de l'enregistrement des utilisateurs
         registerButton.setOnClickListener(v -> {
@@ -65,9 +71,17 @@ public class RegisterActivity extends AppCompatActivity {
                             // L'utilisateur est créé avec succès
                             FirebaseUser user = mAuth.getCurrentUser();
                             if (user != null) {
-                                Toast.makeText(RegisterActivity.this, "Registration successful", Toast.LENGTH_SHORT).show();
-                                Intent intent = new Intent(RegisterActivity.this, MainActivity.class);
-                                startActivity(intent);
+                                User newUser = new User(name, email);
+                                db.collection("users")
+                                        .document(user.getUid())
+                                        .set(newUser)
+                                        .addOnSuccessListener(aVoid ->{
+                                            Toast.makeText(RegisterActivity.this, "User added to Firestore", Toast.LENGTH_SHORT).show();
+                                            Intent intent = new Intent(RegisterActivity.this, MainActivity.class);
+                                            startActivity(intent);
+                                        }).addOnFailureListener(e->{
+                                            Toast.makeText(RegisterActivity.this, "Failed to add user to Firestore: " + e.getMessage(), Toast.LENGTH_SHORT).show();
+                                        });
                             }
 
                         } else {

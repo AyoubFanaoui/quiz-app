@@ -13,9 +13,15 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.firestore.FirebaseFirestore;
+
 import org.app.quizeappculture.database.AppDatabase;
 import org.app.quizeappculture.entites.Question;
+import org.app.quizeappculture.entites.ScoreRecord;
 
+import java.util.Date;
 import java.util.List;
 
 public class QuizActivity extends AppCompatActivity {
@@ -26,6 +32,10 @@ public class QuizActivity extends AppCompatActivity {
     private int score = 0;
     private CountDownTimer quizCountDownTimer;
     private long totalTimeInMillis = 30*1000;
+
+    private long startTimeInMillis;
+    private FirebaseFirestore firestore;
+    private FirebaseAuth firebaseAuth;
 
 
     private TextView questionTextView, quiz_number, timerTextView;
@@ -49,6 +59,10 @@ public class QuizActivity extends AppCompatActivity {
         a2 = findViewById(R.id.a2);
         a3 = findViewById(R.id.a3);
         nextBtn = findViewById(R.id.nextBtn);
+
+        startTimeInMillis = System.currentTimeMillis();  // Début du quiz
+        firestore = FirebaseFirestore.getInstance();
+        firebaseAuth = FirebaseAuth.getInstance();
 
         timerTextView = findViewById(R.id.timerTextView);
         startTimer();
@@ -140,10 +154,41 @@ public class QuizActivity extends AppCompatActivity {
         }.start();
     }
     private void endQuiz() {
-        // Logique pour afficher score ou aller à ScoreActivity
-        Toast.makeText(this, "Time's up!", Toast.LENGTH_SHORT).show();
-        Intent in = new Intent(QuizActivity.this, Score.class);
-        in.putExtra("score", score);
-        startActivity(in);
+        long endTime = System.currentTimeMillis();
+        long durationInSeconds = (endTime - startTimeInMillis) / 1000;
+
+        FirebaseUser user = firebaseAuth.getCurrentUser();
+
+
+        if (user != null) {
+            String userId = user.getUid();
+            ScoreRecord record = new ScoreRecord(
+                    userId,
+                    score,
+                    durationInSeconds,
+                    new Date()
+            );
+
+            firestore.collection("Score_record")
+                    .add(record)
+                    .addOnSuccessListener(documentReference -> {
+                      Toast.makeText(this, "Time's up! and record saved", Toast.LENGTH_SHORT).show();
+                        Intent in = new Intent(QuizActivity.this, Score.class);
+                        in.putExtra("score", score);
+                        in.putExtra("duration", durationInSeconds);
+                        startActivity(in);
+                    }).addOnFailureListener(e->{
+                        Toast.makeText(this, "Time's up! but Failed to save attempt: " + e.getMessage(), Toast.LENGTH_SHORT).show();
+                        // Continue quand même
+                        Intent in = new Intent(QuizActivity.this, Score.class);
+                        in.putExtra("score", score);
+                        in.putExtra("duration", durationInSeconds);
+                        startActivity(in);
+                    });
+
+        }
+
+
+
     }
 }
