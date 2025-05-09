@@ -50,4 +50,5 @@ dependencies {
     annotationProcessor ("androidx.room:room-compiler:2.5.0")
 
     implementation ("com.google.firebase:firebase-firestore:24.9.1")
+    implementation ("com.google.android.gms:play-services-tasks:17.2.1")
 }
