@@ -16,6 +16,7 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
+import com.google.android.material.progressindicator.CircularProgressIndicator;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.Query;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
@@ -28,7 +29,7 @@ public class Score extends AppCompatActivity {
     Button tryAgain, logout;
     TextView scoreView;
     TextView leaderboard ;
-    ProgressBar progress;
+    CircularProgressIndicator progressBare;
 
     int score;
 
@@ -45,11 +46,11 @@ public class Score extends AppCompatActivity {
         scoreView = findViewById(R.id.scoreView);
         leaderboard = findViewById(R.id.textLeaderboard);
 
-        progress = findViewById(R.id.progressBar);
+        progressBare = findViewById(R.id.progressBar);
         Intent prevIntent = getIntent();
         score = prevIntent.getIntExtra("score", 0);
         scoreView.setText((score*100)/5+"%");
-        progress.setProgress(score*100/5);
+        progressBare.setProgress(score*100/5);
 
         topFiveScore();
 

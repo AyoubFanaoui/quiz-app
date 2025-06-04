@@ -51,4 +51,7 @@ dependencies {
 
     implementation ("com.google.firebase:firebase-firestore:24.9.1")
     implementation ("com.google.android.gms:play-services-tasks:17.2.1")
+
+    implementation ("com.google.android.material:material:1.9.0")
+
 }

@@ -7,6 +7,7 @@
     android:layout_height="match_parent"
     tools:context=".Score"
     android:orientation="vertical"
+    android:fitsSystemWindows="true"
     android:background="@drawable/background">
 
 
@@ -45,12 +46,17 @@
         android:text="65%"
         android:textSize="30sp" />
 
-    <ProgressBar
+    <com.google.android.material.progressindicator.CircularProgressIndicator
         android:id="@+id/progressBar"
-        style="?android:attr/progressBarStyle"
-        android:layout_width="match_parent"
-        android:layout_height="150dp"
-        android:layout_margin="10dp" />
+        android:layout_width="156dp"
+        android:layout_height="119dp"
+        android:layout_gravity="center"
+        android:layout_margin="20dp"
+        app:indicatorColor="@color/colorPrimary"
+        app:indicatorInset="8dp"
+        app:indicatorSize="120dp"
+        app:trackColor="@color/colorPrimary"
+        app:trackThickness="8dp" />
 
 
     <TextView
