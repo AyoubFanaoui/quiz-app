@@ -59,6 +59,11 @@ Application Android de quiz culturel conçue dans le cadre de notre formation en
 
 ![image](https://github.com/user-attachments/assets/a77e963f-1367-4e37-aba1-562f88f38ca3)
 
+---
+
+## Licence
+Ce projet est distribué sous licence MIT. Voir le fichier [LICENSE](LICENSE) pour plus de détails.
+
 
 
 
