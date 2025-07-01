@@ -24,14 +24,13 @@
     <string name="quiz3.question1.choix3"> Océan Pacifique </string>
 
 
-
     <!-- Quiz 4   -->
 
     <string name="Quiz4">Quiz 4/5</string>
     <string name="quiz4.question1">Lequel des éléments suivants est reconnu comme un symbole culturel fort de la Palestine ?</string>
     <string name="quiz4.question1.choix1">Le kimono</string>
-    <string name="quiz4.question1.choix2">  Le keffieh </string>
-    <string name="quiz4.question1.choix3">  Le sombrero </string>
+    <string name="quiz4.question1.choix2">Le keffieh </string>
+    <string name="quiz4.question1.choix3">Le sombrero</string>
 
     <!-- Quiz 5   -->
 
